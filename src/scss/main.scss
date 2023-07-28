@@ -1,0 +1,10 @@
+@forward "global";
+@forward "components";
+
+.container > header {
+  > :nth-child(2) {
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+  }
+}

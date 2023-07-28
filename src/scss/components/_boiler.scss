@@ -1,0 +1,67 @@
+@use "../global" as *;
+
+body {
+  background-color: var(--bg);
+  font-size: 14px;
+  color: var(--text);
+  font-family: $ff;
+  text-align: center;
+}
+
+.container {
+  max-width: $big;
+  margin-inline: auto;
+}
+
+body > .container {
+  > * {
+    padding: 1rem 1.5rem;
+  }
+}
+
+h2,
+h1 {
+  font-weight: $semibold;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  color: inherit;
+}
+
+footer {
+  position: relative;
+
+  &::before {
+    @extend %absolute-bg;
+    background-color: var(--bg);
+    z-index: -2;
+  }
+
+  &::after {
+    @extend %absolute-bg;
+    background-color: var(--text);
+    opacity: 0.1;
+    z-index: -1;
+  }
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: $semibold;
+  a {
+    @include flex(row, 0.5rem);
+    align-items: center;
+    width: fit-content;
+  }
+
+  i {
+    @include fa-icon-solid($fa-var-layer-group);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

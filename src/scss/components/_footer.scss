@@ -1,0 +1,204 @@
+@use "../global" as *;
+.primary-btn {
+  height: 2rem;
+}
+
+footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 16rem;
+  padding: 1.5rem 1.5rem;
+  padding-top: 5rem;
+}
+
+.footer-absolute {
+  position: absolute;
+  background-color: var(--bg);
+  top: -16em;
+  padding: 1.5rem;
+  width: min(90%, 600px);
+  box-shadow: $card-box-shadow;
+  overflow: hidden;
+  border-radius: 10px;
+
+  > * {
+    position: relative;
+    z-index: 10000;
+  }
+
+  &::before {
+    @extend %absolute-bg;
+    background-color: var(--bg);
+    z-index: 999;
+  }
+
+  &::after {
+    z-index: 999;
+    @extend %absolute-bg;
+    background-color: var(--text);
+    opacity: 0.1;
+  }
+
+  form {
+    margin-top: 1rem;
+    display: grid;
+    gap: 1.5rem 0;
+
+    > * {
+      height: initial;
+    }
+
+    .err {
+      text-align: initial;
+      color: var(--err);
+      font-weight: $medium;
+      height: 0.5rem;
+      margin-left: 1rem;
+      font-size: 12px;
+    }
+
+    .primary-btn,
+    input {
+      border-radius: 14px;
+      height: 2.4rem;
+      padding: 0 1rem;
+    }
+
+    .input-wrapper {
+      input {
+        background-color: var(--input);
+        width: 100%;
+        border: none;
+        margin-bottom: 0.2rem;
+      }
+    }
+
+    input::placeholder {
+      font-weight: $semibold;
+      color: var(--text);
+    }
+
+    input.warning {
+      outline: 2px solid var(--err);
+    }
+  }
+}
+
+.footer {
+  text-align: initial;
+  --logo-size: 2.2rem;
+  width: 100%;
+
+  .logo {
+    margin-bottom: 1.5rem;
+  }
+
+  &-col-wrapper {
+    @include flex(column, 3rem 0);
+  }
+
+  &-info {
+    display: grid;
+    gap: 0.5rem 0;
+    > * {
+      display: flex;
+      align-items: start;
+      gap: 0 1.5rem;
+    }
+
+    i {
+      font-size: 18px;
+    }
+
+    > :nth-child(1) i {
+      @include fa-icon-solid($fa-var-location);
+    }
+    > :nth-child(2) i {
+      @include fa-icon-solid($fa-var-phone-square-alt);
+    }
+    > :nth-child(3) i {
+      @include fa-icon-solid($fa-var-mail-bulk);
+    }
+  }
+
+  &-brands {
+    @include flex(row, 1rem);
+    justify-content: center;
+    align-items: center;
+
+    button {
+      font-size: 18px;
+      display: grid;
+      place-items: center;
+      background: none;
+      border: none;
+      height: var(--logo-size);
+      width: var(--logo-size);
+      border-radius: 50%;
+      border: 1px solid var(--text);
+    }
+
+    > :nth-child(1) a {
+      @include fa-icon-brands($fa-var-facebook);
+    }
+
+    > :nth-child(2) a {
+      @include fa-icon-brands($fa-var-twitter);
+    }
+
+    > :nth-child(3) a {
+      @include fa-icon-brands($fa-var-instagram);
+    }
+  }
+
+  &-links {
+    @include flex(column, 1rem);
+  }
+}
+
+@media (min-width: 600px) {
+  footer {
+    margin-top: 10rem;
+  }
+
+  .footer-absolute {
+    top: -8rem;
+    form {
+      grid-template-columns: 1fr 220px;
+      gap: 0 1rem;
+    }
+
+    button {
+      white-space: nowrap;
+    }
+  }
+
+  .footer {
+    max-width: $big;
+  }
+
+  .footer-col-wrapper {
+    flex-direction: row;
+    gap: 3rem 2rem;
+    align-items: start;
+
+    > :nth-child(1) {
+      flex: 0 1 26rem;
+    }
+
+    > :nth-child(2) {
+      flex: 0 1 24rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 0.6rem 2rem;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    > :nth-child(3) {
+      justify-content: flex-end;
+    }
+  }
+}

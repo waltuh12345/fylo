@@ -1,0 +1,17 @@
+.logo a,
+a {
+  transition: opacity 0.6s;
+  &:active {
+    opacity: 0.8;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+button {
+  cursor: pointer;
+}

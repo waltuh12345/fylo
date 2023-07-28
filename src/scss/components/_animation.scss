@@ -1,0 +1,107 @@
+body {
+  overflow-x: hidden;
+}
+
+.animate {
+  filter: blur(5px);
+  transition: all 1s;
+}
+
+.animated {
+  filter: blur(0);
+}
+
+.logo.animated {
+  animation: zoomIn 500ms;
+}
+
+header ul {
+  .animated {
+    animation: fadeInRight 500ms;
+  }
+
+  > :nth-child(1) .animated {
+    animation-delay: 100ms;
+  }
+
+  > :nth-child(2) .animated {
+    animation-delay: 200ms;
+  }
+
+  > :nth-child(3) .animated {
+    animation-delay: 300ms;
+  }
+}
+
+main {
+  > :nth-child(1) {
+    h1.animated {
+      animation: fadeIn 500ms;
+      animation-delay: 100ms;
+    }
+
+    p.animated {
+      animation: fadeInUp 500ms;
+      animation-delay: 200ms;
+    }
+
+    img.animated {
+      animation: jackInTheBox 500ms;
+    }
+
+    button.animated {
+      animation: zoomIn 500ms;
+      animation-delay: 300ms;
+    }
+  }
+
+  > :nth-child(2) {
+    > *.animated {
+      animation: fadeIn 2s;
+    }
+  }
+
+  > :nth-child(3) {
+    img.animated {
+      animation: fadeInLeft 500ms;
+    }
+
+    article.animated {
+      animation: fadeInRight 500ms;
+    }
+  }
+
+  > :nth-child(4) {
+    .animated {
+      animation: fadeIn 1s;
+    }
+
+    > :nth-child(1).animated {
+      animation-delay: 100ms;
+    }
+
+    > :nth-child(2).animated {
+      animation-delay: 200ms;
+    }
+
+    > :nth-child(3).animated {
+      animation-delay: 300ms;
+    }
+  }
+
+  @media (min-width: 600px) {
+    > :nth-child(4) {
+      .animated {
+        animation: fadeInLeft 1s;
+      }
+    }
+  }
+}
+
+.footer-absolute.animated {
+  animation: fadeIn 1s;
+
+  @media (min-width: 600px) {
+    animation: fadeInLeft 1s;
+  }
+}

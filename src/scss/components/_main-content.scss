@@ -1,0 +1,149 @@
+@use "../global" as *;
+main > :nth-child(1) {
+  .primary-btn {
+    margin-top: 2rem;
+  }
+}
+
+main {
+  display: grid;
+  gap: 6rem 0;
+
+  picture {
+    margin-bottom: 2rem;
+  }
+
+  picture img {
+    aspect-ratio: 16/9;
+    width: 100%;
+  }
+
+  > :nth-child(3) {
+    text-align: initial;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+main .flex-wrap {
+  display: grid;
+  gap: 3rem 0;
+
+  > * i {
+    font-size: 48px;
+    margin-bottom: 1rem;
+  }
+
+  > :nth-child(1) i {
+    @include fa-icon-solid($fa-var-computer);
+  }
+  > :nth-child(2) i {
+    @include fa-icon-solid($fa-var-shield);
+  }
+  > :nth-child(3) i {
+    @include fa-icon-solid($fa-var-clock);
+  }
+  > :nth-child(4) i {
+    @include fa-icon-solid($fa-var-folder);
+  }
+}
+
+main .even-col-wrapper {
+  text-align: initial;
+  @include flex(column, 1.5rem 0);
+  font-size: 12px;
+
+  > * {
+    position: relative;
+    padding: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: $card-box-shadow;
+
+    &::before {
+      @extend %absolute-bg;
+      background-color: var(--bg);
+      z-index: -2;
+    }
+
+    &::after {
+      @extend %absolute-bg;
+      background-color: var(--text);
+      opacity: 0.1;
+      z-index: -1;
+    }
+  }
+
+  .info {
+    margin-top: 1rem;
+    @include flex(row, 0.5rem);
+    align-items: center;
+
+    > :last-child > :nth-child(1) {
+      font-weight: $semibold;
+    }
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+footer {
+  box-shadow: $card-box-shadow;
+}
+
+@media (min-width: 600px) {
+  main {
+    > :nth-child(2),
+    > :nth-child(1) {
+      max-width: 600px;
+      margin-inline: auto;
+    }
+
+    > :nth-child(2) {
+      max-width: 760px;
+    }
+
+    > :nth-child(3) {
+      display: flex;
+      align-items: center;
+      gap: 0 1rem;
+      justify-content: space-between;
+
+      picture {
+        flex: 0 1.2 36rem;
+        margin: 0;
+      }
+
+      article {
+        flex: 0 1 26rem;
+      }
+    }
+
+    .flex-wrap {
+      gap: 3rem 0;
+      grid-template-columns: 1fr 1fr;
+      p {
+        width: 90%;
+        margin-inline: auto;
+      }
+    }
+
+    .even-col-wrapper {
+      flex-direction: row;
+      gap: 1.5rem 1rem;
+      max-width: $big;
+      flex-wrap: wrap;
+
+      > * {
+        flex: 1 0 200px;
+      }
+    }
+  }
+}

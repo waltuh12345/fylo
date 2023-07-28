@@ -1,0 +1,83 @@
+//=====COLORS======//
+:root {
+  --bg: #121212;
+  --text: #ffffff;
+  --clr-primary: #89d7f3;
+  --clr-neutral: #e5b760;
+  --input: #8a8a8a;
+
+  --err: #cf6679;
+}
+
+.light-theme {
+  --input: #c2c2c2;
+  --bg: #ffffff;
+  --text: #121212;
+  --clr-primary: #34afe8;
+  --clr-neutral: #cc7500;
+}
+
+//=========MIXINS==========//
+
+.dark-bg {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+@mixin overlay() {
+  background-color: var(--bg);
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: white;
+    opacity: 0.1;
+  }
+}
+
+@mixin flex($fd, $gap) {
+  display: flex;
+  flex-direction: $fd;
+  gap: $gap;
+}
+
+@mixin hovered($clr) {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: $clr;
+    }
+  }
+}
+
+@mixin clicked($clr) {
+  &:active {
+    color: $clr;
+  }
+}
+
+//=========FONTS=========//
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+$ff: "Montserrat", sans-serif;
+$heading: clamp(1.13rem, calc(-0.87rem + 10vw), 1.63rem);
+$sub-heading: clamp(1rem, calc(0rem + 5vw), 1.25rem);
+
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+h1 {
+  font-size: $heading;
+}
+
+h2 {
+  font-size: $sub-heading;
+}
+
+//======STYLES=====//
+$card-box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+$big: 1100px;
